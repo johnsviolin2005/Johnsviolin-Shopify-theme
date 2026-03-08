@@ -1,0 +1,282 @@
+/* ============================================================
+   JOHNS VIOLIN COMPANY — jvc-global.css
+   File location: assets/jvc-global.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+/* ── VARIABLES ── */
+:root {
+  --jvc-blue:       #6888a8;
+  --jvc-blue-dark:  #4a6580;
+  --jvc-blue-light: #8aaac8;
+  --jvc-blue-pale:  #c8d8e8;
+  --jvc-blue-wash:  #eef3f8;
+  --jvc-cream:      #faf7f2;
+  --jvc-gold:       #c8a96e;
+  --jvc-gold-light: #e8cc98;
+  --jvc-dark:       #1a2530;
+  --jvc-text:       #2c3e50;
+  --jvc-muted:      #6a7f8f;
+  --jvc-radius-sm:  8px;
+  --jvc-radius-md:  16px;
+  --jvc-radius-lg:  24px;
+  --jvc-radius-pill:50px;
+  --jvc-shadow-sm:  0 2px 12px rgba(74,101,128,0.10);
+  --jvc-shadow-md:  0 8px 30px rgba(74,101,128,0.15);
+  --jvc-shadow-lg:  0 20px 60px rgba(74,101,128,0.20);
+  --jvc-transition: all 0.3s ease;
+}
+
+/* ── RESET INSIDE JVC SECTIONS ── */
+.jvc-section *,
+.jvc-section *::before,
+.jvc-section *::after {
+  box-sizing: border-box;
+}
+.jvc-section {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--jvc-text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* ── TYPOGRAPHY ── */
+.jvc-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--jvc-gold);
+  margin-bottom: 14px;
+}
+.jvc-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.jvc-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--jvc-dark);
+}
+.jvc-h2 em { font-style: italic; color: var(--jvc-blue-dark); }
+.jvc-h2--light { color: #fff; }
+.jvc-h2--light em { color: var(--jvc-gold-light); }
+.jvc-body {
+  font-size: 16px;
+  line-height: 1.78;
+  color: var(--jvc-muted);
+  font-weight: 300;
+}
+
+/* ── BUTTONS ── */
+.jvc-btn {
+  display: inline-block;
+  padding: 15px 34px;
+  border-radius: var(--jvc-radius-pill);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: var(--jvc-transition);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+.jvc-btn--gold {
+  background: var(--jvc-gold);
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(200,169,110,0.32);
+}
+.jvc-btn--gold:hover {
+  background: var(--jvc-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--jvc-shadow-lg);
+  color: #fff;
+}
+.jvc-btn--blue {
+  background: var(--jvc-blue-dark);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(74,101,128,0.28);
+}
+.jvc-btn--blue:hover {
+  background: var(--jvc-dark);
+  transform: translateY(-2px);
+  color: #fff;
+}
+.jvc-btn--outline {
+  background: transparent;
+  color: var(--jvc-blue-dark);
+  border: 2px solid var(--jvc-blue-pale);
+}
+.jvc-btn--outline:hover {
+  border-color: var(--jvc-blue-dark);
+  background: var(--jvc-blue-dark);
+  color: #fff;
+}
+.jvc-btn--outline-white {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.35);
+}
+.jvc-btn--outline-white:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── SHARED CARD STYLES ── */
+.jvc-card {
+  background: #fff;
+  border-radius: var(--jvc-radius-md);
+  border: 1px solid rgba(104,136,168,0.13);
+  transition: var(--jvc-transition);
+}
+.jvc-card:hover {
+  box-shadow: var(--jvc-shadow-md);
+  transform: translateY(-4px);
+}
+.jvc-card--dark {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--jvc-radius-md);
+  transition: var(--jvc-transition);
+}
+.jvc-card--dark:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(200,169,110,0.28);
+  transform: translateY(-4px);
+}
+
+/* ── SECTION SPACING ── */
+.jvc-section--cream  { background: var(--jvc-cream); }
+.jvc-section--white  { background: #fff; }
+.jvc-section--dark   { background: var(--jvc-dark); }
+.jvc-section--blue   { background: var(--jvc-blue-dark); }
+.jvc-pad { padding: 110px 80px; }
+.jvc-pad--sm { padding: 70px 80px; }
+
+/* ── GRID HELPERS ── */
+.jvc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.jvc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.jvc-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.jvc-grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+/* ── BADGE / CERT ── */
+.jvc-cert {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--jvc-gold-light);
+  background: rgba(200,169,110,0.12);
+  padding: 5px 13px;
+  border-radius: var(--jvc-radius-pill);
+  letter-spacing: 0.04em;
+}
+
+/* ── STARS ── */
+.jvc-stars {
+  color: var(--jvc-gold);
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+/* ── FOOTER ── */
+.jvc-footer {
+  background: var(--jvc-dark);
+  color: #fff;
+  padding: 70px 80px 40px;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 52px;
+}
+.jvc-footer__brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.jvc-footer__tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.36);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 265px;
+}
+.jvc-footer__col-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 16px;
+}
+.jvc-footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 0;
+  margin: 0;
+}
+.jvc-footer__links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.52);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.jvc-footer__links a:hover { color: #fff; }
+.jvc-footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.28);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes jvcFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes jvcFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes jvcFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .jvc-pad, .jvc-pad--sm { padding-left: 40px; padding-right: 40px; }
+  .jvc-grid-split { grid-template-columns: 1fr; gap: 48px; }
+  .jvc-grid-4 { grid-template-columns: 1fr 1fr; }
+  .jvc-grid-3 { grid-template-columns: 1fr 1fr; }
+  .jvc-footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  .jvc-pad, .jvc-pad--sm { padding-left: 24px; padding-right: 24px; }
+  .jvc-grid-2, .jvc-grid-3, .jvc-grid-4 { grid-template-columns: 1fr; }
+  .jvc-footer { padding: 50px 24px 32px; }
+  .jvc-footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .jvc-footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
+}

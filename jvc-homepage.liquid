@@ -1,1 +1,568 @@
+{% comment %}
+  JOHNS VIOLIN COMPANY — Homepage Section
+  File location: sections/jvc-homepage.liquid
+  
+  HOW TO USE:
+  1. In Shopify Edit Code → sections/ → Add new section → name: jvc-homepage
+  2. Paste this entire file
+  3. Save
+  4. Go to Online Store → Themes → Customize
+  5. On Homepage, click "Add section" → choose jvc-homepage
+  6. Move it to the top, below the header
+{% endcomment %}
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+{{ 'jvc-global.css' | asset_url | stylesheet_tag }}
+
+<style>
+/* ── HERO ── */
+.jvc-hero {
+  position: relative;
+  min-height: 90vh;
+  background: var(--jvc-blue-dark);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.jvc-hero__radial {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 70% 20%, rgba(200,169,110,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 15% 80%, rgba(138,170,200,0.18) 0%, transparent 45%);
+}
+.jvc-hero__diag {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 52%;
+  opacity: 0.04;
+  background-image: repeating-linear-gradient(-45deg, white 0, white 1px, transparent 1px, transparent 38px);
+}
+.jvc-hero__left {
+  position: relative; z-index: 2;
+  padding: 90px 50px 90px 80px;
+  color: #fff;
+}
+.jvc-hero__eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--jvc-gold-light);
+  margin-bottom: 28px;
+  animation: jvcFadeUp 0.7s 0.1s ease both;
+}
+.jvc-hero__eyebrow::before {
+  content: ''; display: block;
+  width: 28px; height: 2px; background: var(--jvc-gold);
+}
+.jvc-hero__h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 5.5vw, 76px);
+  font-weight: 900; line-height: 1.02;
+  letter-spacing: -0.025em; margin-bottom: 24px;
+  color: #fff;
+  animation: jvcFadeUp 0.7s 0.25s ease both;
+}
+.jvc-hero__h1 em { font-style: italic; color: var(--jvc-gold-light); }
+.jvc-hero__p {
+  font-size: 17px; line-height: 1.72;
+  color: rgba(255,255,255,0.68);
+  max-width: 430px; font-weight: 300; margin-bottom: 42px;
+  animation: jvcFadeUp 0.7s 0.4s ease both;
+}
+.jvc-hero__btns {
+  display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  animation: jvcFadeUp 0.7s 0.55s ease both;
+}
+.jvc-hero__ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.7); font-size: 14px;
+  font-weight: 500; text-decoration: none; transition: color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-hero__ghost:hover { color: #fff; }
+.jvc-hero__stats {
+  display: flex; gap: 44px; margin-top: 60px;
+  padding-top: 38px; border-top: 1px solid rgba(255,255,255,0.1);
+  animation: jvcFadeUp 0.7s 0.7s ease both;
+}
+.jvc-hero__stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 700; color: #fff; line-height: 1;
+}
+.jvc-hero__stat-l {
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-top: 5px;
+}
+.jvc-hero__right {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 60px 60px 30px; min-height: 90vh;
+}
+.jvc-hero__frame {
+  width: 100%; max-width: 400px; aspect-ratio: 3/4;
+  border-radius: 180px 180px 24px 24px;
+  background: linear-gradient(160deg, rgba(138,170,200,0.22) 0%, rgba(74,101,128,0.38) 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative; overflow: hidden;
+  animation: jvcFadeIn 1s 0.3s ease both;
+}
+.jvc-hero__frame img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top;
+}
+.jvc-hero__frame-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); text-align: center; padding: 40px;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-hero__badge {
+  position: absolute; top: 36px; right: -16px;
+  background: var(--jvc-gold); color: #fff;
+  border-radius: 50%; width: 112px; height: 112px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 12px;
+  box-shadow: 0 8px 28px rgba(200,169,110,0.45);
+  animation: jvcFloat 4s ease-in-out infinite;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-hero__badge-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 900; line-height: 1;
+}
+.jvc-hero__badge-t {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-top: 3px; opacity: 0.9;
+}
+
+/* ── TRUST BAR ── */
+.jvc-trust {
+  background: #fff;
+  border-bottom: 1px solid rgba(104,136,168,0.1);
+  padding: 18px 80px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.jvc-trust__item {
+  display: flex; align-items: center; gap: 11px;
+  font-size: 13px; font-weight: 500; color: var(--jvc-text);
+  white-space: nowrap; font-family: 'DM Sans', sans-serif;
+}
+.jvc-trust__icon {
+  width: 36px; height: 36px; background: var(--jvc-blue-wash);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 16px; flex-shrink: 0;
+}
+.jvc-trust__div {
+  width: 1px; height: 28px;
+  background: rgba(104,136,168,0.18); flex-shrink: 0;
+}
+
+/* ── RENTAL SECTION ── */
+.jvc-rental {
+  padding: 110px 80px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 90px; align-items: center;
+  background: var(--jvc-cream);
+}
+.jvc-rental__cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+.jvc-rc {
+  background: #fff; border-radius: 18px; padding: 28px 22px;
+  border: 1px solid rgba(104,136,168,0.14);
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.jvc-rc::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--jvc-blue-pale); transition: background 0.3s;
+}
+.jvc-rc:hover { box-shadow: var(--jvc-shadow-md); transform: translateY(-4px); }
+.jvc-rc:hover::after { background: var(--jvc-gold); }
+.jvc-rc--feat { background: var(--jvc-blue-dark); border-color: transparent; }
+.jvc-rc--feat::after { background: var(--jvc-gold); }
+.jvc-rc__emoji { font-size: 26px; margin-bottom: 10px; display: block; }
+.jvc-rc__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--jvc-dark); margin-bottom: 6px;
+}
+.jvc-rc--feat .jvc-rc__name { color: #fff; }
+.jvc-rc__price { font-size: 30px; font-weight: 700; color: var(--jvc-blue-dark); line-height: 1; }
+.jvc-rc--feat .jvc-rc__price { color: var(--jvc-gold-light); }
+.jvc-rc__mo { font-size: 12px; color: var(--jvc-muted); font-family: 'DM Sans', sans-serif; }
+.jvc-rc--feat .jvc-rc__mo { color: rgba(255,255,255,0.45); }
+
+/* ── FINE INSTRUMENTS ── */
+.jvc-fine {
+  background: var(--jvc-dark);
+  padding: 110px 80px;
+  position: relative; overflow: hidden;
+}
+.jvc-fine::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 65% 50%, rgba(104,136,168,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+.jvc-fine__header {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 56px; position: relative; z-index: 2;
+}
+.jvc-fine__link {
+  color: rgba(255,255,255,0.4); font-size: 14px;
+  text-decoration: none; transition: color 0.2s; white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-fine__link:hover { color: var(--jvc-gold-light); }
+.jvc-fine__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; position: relative; z-index: 2;
+}
+.jvc-fi {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px; padding: 28px 24px; transition: all 0.3s; cursor: pointer;
+}
+.jvc-fi:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(200,169,110,0.28);
+  transform: translateY(-4px);
+}
+.jvc-fi--cta {
+  background: rgba(200,169,110,0.07);
+  border-color: rgba(200,169,110,0.2);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; gap: 10px;
+}
+.jvc-fi__year {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--jvc-gold); margin-bottom: 8px; font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-fi__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 6px;
+}
+.jvc-fi__origin {
+  font-size: 13px; color: rgba(255,255,255,0.38);
+  margin-bottom: 16px; font-family: 'DM Sans', sans-serif;
+}
+.jvc-fi__cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--jvc-gold-light);
+}
+.jvc-fi__cta-sub {
+  font-size: 13px; color: rgba(255,255,255,0.35);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── TESTIMONIALS ── */
+.jvc-testi {
+  background: #fff; padding: 110px 80px;
+}
+.jvc-testi__header { text-align: center; margin-bottom: 60px; }
+.jvc-testi__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
+}
+.jvc-tc {
+  background: var(--jvc-blue-wash); border-radius: 18px;
+  padding: 32px 28px; border: 1px solid rgba(104,136,168,0.12);
+  transition: transform 0.3s;
+}
+.jvc-tc:hover { transform: translateY(-4px); }
+.jvc-tc__text {
+  font-size: 15px; line-height: 1.75; color: var(--jvc-text);
+  font-style: italic; margin-bottom: 20px;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-tc__author {
+  font-size: 13px; font-weight: 600; color: var(--jvc-blue-dark);
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-tc__ctx {
+  font-size: 12px; color: var(--jvc-muted); margin-top: 3px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── SCHOOLS ── */
+.jvc-schools {
+  background: var(--jvc-blue-dark);
+  padding: 90px 80px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.jvc-schools::before {
+  content: ''; position: absolute;
+  right: -80px; top: -80px; width: 300px; height: 300px;
+  background: rgba(200,169,110,0.08); border-radius: 50%;
+  pointer-events: none;
+}
+.jvc-del-list { display: flex; flex-direction: column; gap: 14px; }
+.jvc-del {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px; padding: 18px 22px;
+  display: flex; align-items: center; gap: 16px;
+  color: #fff; transition: background 0.2s;
+}
+.jvc-del:hover { background: rgba(255,255,255,0.11); }
+.jvc-del__icon {
+  width: 46px; height: 46px;
+  background: rgba(200,169,110,0.18); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.jvc-del__title {
+  font-weight: 600; font-size: 15px; margin-bottom: 2px;
+  font-family: 'DM Sans', sans-serif;
+}
+.jvc-del__desc {
+  font-size: 12px; color: rgba(255,255,255,0.45);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .jvc-hero { grid-template-columns: 1fr; min-height: auto; }
+  .jvc-hero__right { display: none; }
+  .jvc-hero__left { padding: 80px 40px; }
+  .jvc-rental { grid-template-columns: 1fr; gap: 48px; padding: 70px 40px; }
+  .jvc-schools { grid-template-columns: 1fr; gap: 48px; padding: 70px 40px; }
+  .jvc-fine__grid { grid-template-columns: 1fr 1fr; }
+  .jvc-testi__grid { grid-template-columns: 1fr 1fr; }
+  .jvc-fine, .jvc-testi { padding: 70px 40px; }
+}
+@media (max-width: 768px) {
+  .jvc-trust { padding: 16px 24px; justify-content: center; }
+  .jvc-trust__div { display: none; }
+  .jvc-fine__grid { grid-template-columns: 1fr; }
+  .jvc-testi__grid { grid-template-columns: 1fr; }
+  .jvc-rental__cards { grid-template-columns: 1fr 1fr; }
+  .jvc-fine__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+</style>
+
+<!-- ░░░ HERO ░░░ -->
+<section class="jvc-section jvc-hero">
+  <div class="jvc-hero__radial"></div>
+  <div class="jvc-hero__diag"></div>
+
+  <div class="jvc-hero__left">
+    <div class="jvc-hero__eyebrow">Atlanta's Premier String Specialists</div>
+    <h1 class="jvc-hero__h1">The <em>finest</em><br>instruments,<br>for every stage.</h1>
+    <p class="jvc-hero__p">From first-year rentals to concert-grade Italian masterpieces — Johns Violin Company has served musicians across Georgia and North Carolina since 2007.</p>
+    <div class="jvc-hero__btns">
+      <a href="{{ section.settings.rental_url }}" class="jvc-btn jvc-btn--gold">Rent an Instrument</a>
+      <a href="{{ section.settings.fine_url }}" class="jvc-hero__ghost">› Explore Fine Instruments</a>
+    </div>
+    <div class="jvc-hero__stats">
+      <div><div class="jvc-hero__stat-n">2007</div><div class="jvc-hero__stat-l">Established</div></div>
+      <div><div class="jvc-hero__stat-n">2</div><div class="jvc-hero__stat-l">Locations</div></div>
+      <div><div class="jvc-hero__stat-n">$20</div><div class="jvc-hero__stat-l">Rentals from /mo</div></div>
+    </div>
+  </div>
+
+  <div class="jvc-hero__right">
+    <div class="jvc-hero__frame">
+      {% if section.settings.hero_image %}
+        <img src="{{ section.settings.hero_image | img_url: '800x' }}" alt="Johns Violin Company">
+      {% else %}
+        <div class="jvc-hero__frame-placeholder">Add a photo in the theme editor →<br>Theme Editor → jvc-homepage → Hero Image</div>
+      {% endif %}
+      <div class="jvc-hero__badge">
+        <span class="jvc-hero__badge-n">★4.9</span>
+        <span class="jvc-hero__badge-t">Trusted by<br>Families</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ TRUST BAR ░░░ -->
+<div class="jvc-section jvc-trust">
+  <div class="jvc-trust__item"><div class="jvc-trust__icon">🚚</div>Free Shipping & School Delivery</div>
+  <div class="jvc-trust__div"></div>
+  <div class="jvc-trust__item"><div class="jvc-trust__icon">🔄</div>100% Trade-In Credit</div>
+  <div class="jvc-trust__div"></div>
+  <div class="jvc-trust__item"><div class="jvc-trust__icon">🔧</div>Lifetime Free Adjustments</div>
+  <div class="jvc-trust__div"></div>
+  <div class="jvc-trust__item"><div class="jvc-trust__icon">🛡️</div>Optional Damage Protection</div>
+  <div class="jvc-trust__div"></div>
+  <div class="jvc-trust__item"><div class="jvc-trust__icon">🏪</div>In-Store Pickup Available</div>
+</div>
+
+<!-- ░░░ RENTAL CTA ░░░ -->
+<section class="jvc-section jvc-rental">
+  <div>
+    <div class="jvc-label">Orchestra Rentals</div>
+    <h2 class="jvc-h2">Start for just <em>$20</em> a month.</h2>
+    <p class="jvc-body" style="margin: 20px 0 36px">Every rental comes with a wooden bow, case, rosin, nametag, and lifetime free adjustments. No hidden fees. No long-term commitments. Cancel or upgrade anytime.</p>
+    <a href="{{ section.settings.rental_url }}" class="jvc-btn jvc-btn--blue">See All Rental Options →</a>
+  </div>
+  <div class="jvc-rental__cards">
+    <div class="jvc-rc jvc-rc--feat"><span class="jvc-rc__emoji">🎻</span><div class="jvc-rc__name">Violin</div><div class="jvc-rc__price">$20</div><div class="jvc-rc__mo">/ month</div></div>
+    <div class="jvc-rc"><span class="jvc-rc__emoji">🎼</span><div class="jvc-rc__name">Viola</div><div class="jvc-rc__price" style="color:var(--jvc-blue-dark)">$25</div><div class="jvc-rc__mo">/ month</div></div>
+    <div class="jvc-rc"><span class="jvc-rc__emoji">🎵</span><div class="jvc-rc__name">Cello</div><div class="jvc-rc__price" style="color:var(--jvc-blue-dark)">$45</div><div class="jvc-rc__mo">/ month</div></div>
+    <div class="jvc-rc"><span class="jvc-rc__emoji">🎸</span><div class="jvc-rc__name">Bass</div><div class="jvc-rc__price" style="color:var(--jvc-blue-dark)">$65</div><div class="jvc-rc__mo">/ month</div></div>
+  </div>
+</section>
+
+<!-- ░░░ FINE INSTRUMENTS ░░░ -->
+<section class="jvc-section jvc-fine">
+  <div class="jvc-fine__header">
+    <div>
+      <div class="jvc-label">Fine Instrument Gallery</div>
+      <h2 class="jvc-h2 jvc-h2--light" style="max-width:420px">Rare Italian & French <em>masterpieces</em>, in stock.</h2>
+    </div>
+    <a href="{{ section.settings.fine_url }}" class="jvc-fine__link">View Full Collection →</a>
+  </div>
+  <div class="jvc-fine__grid">
+    <div class="jvc-fi"><div class="jvc-fi__year">Turin, Italy · 1929</div><div class="jvc-fi__title">Annibale Fagnola Violin</div><div class="jvc-fi__origin">Certified — exceptional provenance</div><span class="jvc-cert">✓ Certificate of Authenticity</span></div>
+    <div class="jvc-fi"><div class="jvc-fi__year">Turin, Italy · 1931</div><div class="jvc-fi__title">Carlos Giuseppe Oddone Violin</div><div class="jvc-fi__origin">Outstanding tonal character</div><span class="jvc-cert">✓ Provenance Documented</span></div>
+    <div class="jvc-fi"><div class="jvc-fi__year">Torino, Italy · 1947</div><div class="jvc-fi__title">Evasio Emilio Guerra Violin</div><div class="jvc-fi__origin">Certified fine Italian work</div><span class="jvc-cert">✓ Certificate of Authenticity</span></div>
+    <div class="jvc-fi"><div class="jvc-fi__year">France · Circa 1870</div><div class="jvc-fi__title">Fine French Viola</div><div class="jvc-fi__origin">Exceptional craftsmanship</div><span class="jvc-cert">✓ Expert Appraised</span></div>
+    <div class="jvc-fi"><div class="jvc-fi__year">Central Italy · Circa 1825</div><div class="jvc-fi__title">Fine Italian Violin</div><div class="jvc-fi__origin">Unlabeled — with certificate</div><span class="jvc-cert">✓ Certificate Included</span></div>
+    <div class="jvc-fi jvc-fi--cta"><div style="font-size:36px">🎻</div><div class="jvc-fi__cta-title">Full Collection</div><div class="jvc-fi__cta-sub">Browse all fine instruments →</div></div>
+  </div>
+</section>
+
+<!-- ░░░ TESTIMONIALS ░░░ -->
+<section class="jvc-section jvc-testi">
+  <div class="jvc-testi__header">
+    <div class="jvc-label">What Families Say</div>
+    <h2 class="jvc-h2" style="max-width:400px;margin:0 auto">Trusted by families across the Southeast.</h2>
+  </div>
+  <div class="jvc-testi__grid">
+    <div class="jvc-tc"><div class="jvc-stars">★★★★★</div><p class="jvc-tc__text">"{{ section.settings.review_1_text }}"</p><div class="jvc-tc__author">{{ section.settings.review_1_author }}</div><div class="jvc-tc__ctx">{{ section.settings.review_1_context }}</div></div>
+    <div class="jvc-tc"><div class="jvc-stars">★★★★★</div><p class="jvc-tc__text">"{{ section.settings.review_2_text }}"</p><div class="jvc-tc__author">{{ section.settings.review_2_author }}</div><div class="jvc-tc__ctx">{{ section.settings.review_2_context }}</div></div>
+    <div class="jvc-tc"><div class="jvc-stars">★★★★★</div><p class="jvc-tc__text">"{{ section.settings.review_3_text }}"</p><div class="jvc-tc__author">{{ section.settings.review_3_author }}</div><div class="jvc-tc__ctx">{{ section.settings.review_3_context }}</div></div>
+  </div>
+</section>
+
+<!-- ░░░ SCHOOLS BANNER ░░░ -->
+<section class="jvc-section jvc-schools">
+  <div>
+    <div class="jvc-label" style="color:var(--jvc-gold-light)">For Schools & Teachers</div>
+    <h2 class="jvc-h2 jvc-h2--light">We deliver<br>to your school.</h2>
+    <p class="jvc-body" style="color:rgba(255,255,255,0.6);margin:20px 0 36px">We partner directly with orchestra programs across Georgia and North Carolina. Instruments delivered to school, shipped free, or picked up in-store.</p>
+    <a href="{{ section.settings.contact_url }}" class="jvc-btn jvc-btn--gold">Contact Us for School Partnerships →</a>
+  </div>
+  <div class="jvc-del-list">
+    <div class="jvc-del"><div class="jvc-del__icon">🏫</div><div><div class="jvc-del__title">School Delivery</div><div class="jvc-del__desc">Delivered directly to your child's school</div></div></div>
+    <div class="jvc-del"><div class="jvc-del__icon">🚚</div><div><div class="jvc-del__title">Free Home Shipping</div><div class="jvc-del__desc">Fast, free shipping anywhere in the US</div></div></div>
+    <div class="jvc-del"><div class="jvc-del__icon">🏪</div><div><div class="jvc-del__title">In-Store Pickup</div><div class="jvc-del__desc">Same-day pickup at either location</div></div></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JVC Homepage",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero photo (violin or store)"
+    },
+    {
+      "type": "header",
+      "content": "Page Links"
+    },
+    {
+      "type": "url",
+      "id": "rental_url",
+      "label": "Rental page URL",
+      "default": "/pages/rentals"
+    },
+    {
+      "type": "url",
+      "id": "fine_url",
+      "label": "Fine instruments page URL",
+      "default": "/pages/fine-instruments"
+    },
+    {
+      "type": "url",
+      "id": "contact_url",
+      "label": "Contact page URL",
+      "default": "/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "Review 1"
+    },
+    {
+      "type": "textarea",
+      "id": "review_1_text",
+      "label": "Review text",
+      "default": "The rental process was so easy. My daughter's violin arrived tuned and ready with everything she needed."
+    },
+    {
+      "type": "text",
+      "id": "review_1_author",
+      "label": "Reviewer name",
+      "default": "Sarah M."
+    },
+    {
+      "type": "text",
+      "id": "review_1_context",
+      "label": "Reviewer context",
+      "default": "Parent · Peachtree City, GA"
+    },
+    {
+      "type": "header",
+      "content": "Review 2"
+    },
+    {
+      "type": "textarea",
+      "id": "review_2_text",
+      "label": "Review text",
+      "default": "The quality of the rental instrument was far above what other shops charge. The lifetime adjustment policy is something you won't find anywhere else."
+    },
+    {
+      "type": "text",
+      "id": "review_2_author",
+      "label": "Reviewer name",
+      "default": "James T."
+    },
+    {
+      "type": "text",
+      "id": "review_2_context",
+      "label": "Reviewer context",
+      "default": "Parent · Wake Forest, NC"
+    },
+    {
+      "type": "header",
+      "content": "Review 3"
+    },
+    {
+      "type": "textarea",
+      "id": "review_3_text",
+      "label": "Review text",
+      "default": "As an orchestra teacher I recommend Johns Violin Company to all my students. Their school delivery program is a game-changer for busy families."
+    },
+    {
+      "type": "text",
+      "id": "review_3_author",
+      "label": "Reviewer name",
+      "default": "Ms. Chen"
+    },
+    {
+      "type": "text",
+      "id": "review_3_context",
+      "label": "Reviewer context",
+      "default": "Orchestra Director · Atlanta Area"
+    }
+  ],
+  "presets": [
+    {
+      "name": "JVC Homepage"
+    }
+  ]
+}
+{% endschema %}
